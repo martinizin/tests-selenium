@@ -1,0 +1,260 @@
+{
+  "id": "2bb85c61-fc91-425a-a53c-7a4681a31fd6",
+  "version": "2.0",
+  "name": "Proyecto_VV_Apellido_Nombre",
+  "url": "https://www.saucedemo.com",
+  "tests": [
+    {
+      "id": "2028a763-1aaa-4fb0-9da7-46c61d0bf8a7",
+      "name": "CP01_Login_Happy_Path",
+      "commands": [
+        {
+          "id": "578537d0-586f-4abe-bf1c-4ba949d43344",
+          "comment": "Navegar a la URL base",
+          "command": "open",
+          "target": "/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "52aebb88-1371-434e-a6af-ede6186c14f5",
+          "comment": "Resolucion estandar",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "85f7e08e-2291-4c8b-aff8-e3dc6cea86ea",
+          "comment": "Ingresar usuario valido — fix Firefox initKeyEvent",
+          "command": "executeScript",
+          "target": "(function(){var el=document.getElementById('user-name');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(el,'standard_user');el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));})()",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "c612daa7-cc8a-464d-a0f4-7891c59802db",
+          "comment": "Ingresar password valida — fix Firefox initKeyEvent",
+          "command": "executeScript",
+          "target": "(function(){var el=document.getElementById('password');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(el,'secret_sauce');el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));})()",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cd741753-9153-42a0-b863-a18506b7fcb4",
+          "comment": "Enviar formulario",
+          "command": "click",
+          "target": "id=login-button",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "16277541-e61d-49fe-ae12-f35f5b676f40",
+          "comment": "Verificar titulo del dashboard",
+          "command": "assertElementPresent",
+          "target": "css=.title",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "9c08ad76-a062-4c0c-9b4e-e69eb4ab3f61",
+          "comment": "Asercion dura del happy path",
+          "command": "assertText",
+          "target": "css=.title",
+          "targets": [],
+          "value": "Products"
+        },
+        {
+          "id": "1e26b23f-a7ca-49c9-8348-d2c241c2e57f",
+          "comment": "Confirmar URL del dashboard — assertLocation no existe en IDE 4.x, se usa executeScript",
+          "command": "executeScript",
+          "target": "if(window.location.href!=='https://www.saucedemo.com/inventory.html')throw new Error('URL incorrecta: '+window.location.href);",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "d310d08c-3541-4ded-8f41-24e09804f669",
+      "name": "CP02_Login_Negativo",
+      "commands": [
+        {
+          "id": "ba52564f-9cb4-491a-96b7-03868ff3a319",
+          "comment": "",
+          "command": "open",
+          "target": "/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "6ac0d42a-5eba-4c53-b01b-ffe1f00a63ea",
+          "comment": "Usuario inexistente — fix Firefox initKeyEvent",
+          "command": "executeScript",
+          "target": "(function(){var el=document.getElementById('user-name');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(el,'wrong_user');el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));})()",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "2d1e98ee-ce4a-41e1-a400-a6ee6eb5715c",
+          "comment": "Password incorrecta — fix Firefox initKeyEvent",
+          "command": "executeScript",
+          "target": "(function(){var el=document.getElementById('password');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(el,'wrong_pass');el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));})()",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "28fb4095-c077-4ccf-b66e-148d2a60962e",
+          "comment": "",
+          "command": "click",
+          "target": "id=login-button",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "aa81f05b-fc15-4c8d-acd2-5f8b02619150",
+          "comment": "Verificacion blanda del error",
+          "command": "verifyElementPresent",
+          "target": "css=[data-test=\"error\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "9446a18f-2449-4fe1-afa1-af57e577f6b4",
+          "comment": "Verificacion del mensaje exacto",
+          "command": "verifyText",
+          "target": "css=[data-test=\"error\"]",
+          "targets": [],
+          "value": "Epic sadface: Username and password do not match any user in this service"
+        }
+      ]
+    },
+    {
+      "id": "9c245255-fe74-4fc2-a5e4-56ceb22254ba",
+      "name": "CP03_Carrito_Dinamico",
+      "commands": [
+        {
+          "id": "50de8958-da85-4d05-93d4-b4006c03043a",
+          "comment": "",
+          "command": "open",
+          "target": "/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "df139149-75a6-4054-a0d4-5cbdb94f2d7f",
+          "comment": "Fix Firefox initKeyEvent",
+          "command": "executeScript",
+          "target": "(function(){var el=document.getElementById('user-name');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(el,'standard_user');el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));})()",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "a3613473-1f42-4505-81ea-4413a9948835",
+          "comment": "Fix Firefox initKeyEvent",
+          "command": "executeScript",
+          "target": "(function(){var el=document.getElementById('password');var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(el,'secret_sauce');el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));})()",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "8850f2a5-e3ba-498a-a3e9-8f5374d755a0",
+          "comment": "",
+          "command": "click",
+          "target": "id=login-button",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "d9c46522-be58-4057-879b-c770442c1946",
+          "comment": "Espera explicita por carga del catalogo",
+          "command": "waitForElementVisible",
+          "target": "css=.inventory_list",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "4cebed42-52eb-4b42-b597-b92cdff70ed1",
+          "comment": "Filtrado dinamico — clase directa evita problema de comillas en data-test selector",
+          "command": "select",
+          "target": "css=.product_sort_container",
+          "targets": [],
+          "value": "label=Price (low to high)"
+        },
+        {
+          "id": "bb27010d-f100-434b-a846-937f0a57c954",
+          "comment": "Agregar al carrito",
+          "command": "click",
+          "target": "id=add-to-cart-sauce-labs-backpack",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "f559ea5f-03a6-4f0a-aa28-98bc1b49589f",
+          "comment": "Agregar segundo item",
+          "command": "click",
+          "target": "id=add-to-cart-sauce-labs-bike-light",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "d64fddac-e113-4b2e-be06-f25a6ed8fb4f",
+          "comment": "Validar contador del carrito",
+          "command": "assertText",
+          "target": "css=.shopping_cart_badge",
+          "targets": [],
+          "value": "2"
+        },
+        {
+          "id": "f319aaa1-3ed0-460e-8ef3-d1c499a79c21",
+          "comment": "Navegar al carrito",
+          "command": "click",
+          "target": "css=.shopping_cart_link",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "2b207e13-6930-4a53-9ac7-a6ed32caa3aa",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "css=.cart_item",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "b4764928-8d43-41ba-9cfc-0fa80895712d",
+          "comment": "Eliminar un item",
+          "command": "click",
+          "target": "id=remove-sauce-labs-backpack",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "da94373b-e270-4b9e-b1ba-03d37d248f20",
+          "comment": "Confirmar eliminacion",
+          "command": "verifyElementNotPresent",
+          "target": "id=remove-sauce-labs-backpack",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "f10a1f98-775a-4259-8684-46702cfb6b73",
+      "name": "Suite_Regresion_Basica",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": [
+        "2028a763-1aaa-4fb0-9da7-46c61d0bf8a7",
+        "d310d08c-3541-4ded-8f41-24e09804f669",
+        "9c245255-fe74-4fc2-a5e4-56ceb22254ba"
+      ]
+    }
+  ],
+  "urls": [
+    "https://www.saucedemo.com/"
+  ],
+  "plugins": []
+}
