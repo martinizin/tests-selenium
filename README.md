@@ -36,22 +36,6 @@
 
 ---
 
-## Personalización (antes de ejecutar)
-
-Abrir `selenium/Suite_Regresion_Basica.side` en un editor de texto y reemplazar:
-
-```json
-"name": "Proyecto_VV_Apellido_Nombre"
-```
-
-con tu apellido y nombre reales, por ejemplo:
-
-```json
-"name": "Proyecto_VV_Pillacela_Martin"
-```
-
----
-
 ## Casos de prueba incluidos
 
 | ID   | Nombre                  | Tipo              | Aserciones clave                                      |
@@ -67,25 +51,10 @@ con tu apellido y nombre reales, por ejemplo:
 ```
 selenium-tests/
 ├── README.md
-├── Selenium.md                        # PRD del proyecto
 ├── .gitignore
 ├── selenium/
 │   └── Suite_Regresion_Basica.side    # Proyecto Selenium IDE
-└── informe/
-    ├── informe_practica.md            # Plantilla del informe (completar tras ejecución)
-    └── evidencias/                    # Screenshots de ejecución
-```
+
 
 ---
-
-## Checklist de tareas manuales pendientes
-
-- [ ] Reemplazar `Proyecto_VV_Apellido_Nombre` en el `.side` con tu nombre real.
-- [ ] Ejecutar la suite completa en Selenium IDE.
-- [ ] Capturar `informe/evidencias/01_log_passed.png` (log verde).
-- [ ] Capturar `informe/evidencias/02_assert_editor.png` (comando assertText CP01).
-- [ ] *(Opcional)* Capturar `informe/evidencias/03_error_cp02.png`.
-- [ ] Completar todos los `<!-- TODO MANUAL -->` en `informe/informe_practica.md`.
-- [ ] Commit final: `docs: completar informe con evidencias de ejecución`
-
-Ver detalles completos en `Selenium.md` § 5.
+.
